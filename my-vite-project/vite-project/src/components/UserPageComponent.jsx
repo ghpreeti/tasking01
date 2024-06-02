@@ -1,5 +1,6 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
+import UserCard from './UserCard';
 
 function UserPageComponent() {
 
@@ -13,17 +14,21 @@ function UserPageComponent() {
     },[]);
 
   return (
-    <div>
-        <h2>User List</h2>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>
-            {user.firstName} {user.lastName} - {user.email}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <div style={styles.container}>
+    <h2>User List</h2>
+    {users.map(user => (
+      <UserCard key={user.id} user={user} />
+    ))}
+  </div>
   );
 };
+
+const styles = {
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+  };
 
 export default UserPageComponent
